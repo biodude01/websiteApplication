@@ -1,0 +1,21 @@
+<header>
+    <ul>
+      <nav>
+        <li><a routerLink="/productSearch" [class.active]="activeLink  === '/productSearch'" (click)="activeClick('/productSearch')">Products</a></li>
+        <li><a routerLink="/statistics" [class.active]="activeLink  === '/statistics'" (click)="activeClick('/statistics')">Market Statistics</a></li>
+        <li><a routerLink="/information"[class.active]="activeLink  === '/information'" (click)="activeClick('/information')">Site Info</a></li>
+        <li><a routerLink="/shoppingList"[class.active]="activeLink  === '/shoppingList'" (click)="activeClick('/shoppingList')">User Lists</a></li>
+        <li><a routerLink="/userAccount"[class.active]="activeLink  === '/userAccount'" (click)="activeClick('/userAccount')">Manage Account</a></li>
+        <li><a *ngIf="loginCheck === false" routerLink="/login" [class.active]="activeLink  === '/login'" (click)="activeClick('/login')">Login</a></li>
+        <li><a *ngIf="loginCheck === false" routerLink="/register" [class.active]="activeLink  === '/register'" (click)="activeClick('/register')">Register</a></li>
+        <li><a (click)="onLogout()" *ngIf="loginCheck ===true">Logout</a></li>
+      </nav>
+    </ul>
+  </header>
+
+<main>
+
+<router-outlet></router-outlet>
+</main>
+
+

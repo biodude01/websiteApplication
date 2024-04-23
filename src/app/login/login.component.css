@@ -1,0 +1,55 @@
+
+.loginPanel {
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -70%); 
+  background-color: #894b4b;
+  padding: 80px;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 6px solid #3a0202;  
+  z-index: 1; 
+}
+
+.login h2 {
+  margin-bottom: 40px;
+  color: #333; 
+}
+
+.loginWarning {
+  color: crimson;
+  margin-top: 10px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  color: #413f3f; 
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #023162;
+}
+

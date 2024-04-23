@@ -1,0 +1,52 @@
+<body>
+<form (ngSubmit)="search($event)">
+<div class="searchContainer">
+    <input type="text" name="productName" placeholder="Search for products">
+    <div class="checkboxContainer">
+      <label><input type="checkbox" name="tescoCheck" checked> Tesco</label>
+      <label><input type="checkbox" name="asdaCheck" checked> Asda</label>
+      <label><input type="checkbox" name="sainsburyCheck" checked> Sainsbury</label>
+    </div>
+    <div class="categoryBar">
+      <label for="categorySelect">Product category:</label>
+      <select id="categorySelect" name="productCategory">   
+        <option value="" selected>Select Category</option>  
+        <option value="Bakery & Snacks">Bakery & Snacks</option>
+        <option value="Confectionery & Sweets">Confectionery & Sweets</option>
+        <option value="Cooking & Ingredients">Cooking & Ingredients</option>
+        <option value="Drinks">Drinks</option>
+        <option value="Ethnic & World Foods">Ethnic & World Foods</option>
+        <option value="Free From & Dietary Options">Free From & Dietary</option>
+        <option value="Fresh & Chilled Foods">Fresh & Chilled Foods</option>
+      </select>
+    </div>
+    <button type="submit">Search</button>
+  </div>
+  </form>
+
+  <div id="searchArea" style="display: none;">
+  <header>
+    <div class="container">
+      <h1>Search Results for {{ searchTerm }} </h1>
+    </div>
+  </header>
+
+
+    <div class="searchResults" *ngFor="let product of searchResults">
+      <div class="resultItem" href (click)="onclick(product)">
+        <img src={{product.productImage}}>
+        <h2><a>{{product.productName}}</a></h2>
+        <span class="price">{{product.historicalData[0].productPrice}}</span>
+        <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="product.storeOrigin === 'asda'" src="/assets/asdaIcon.png" alt="AsdaImage">
+        <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="product.storeOrigin === 'tesco'" src="/assets/tescoIcon.png" alt="TescoImage">
+        <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="product.storeOrigin === 'sainsbury'" src="/assets/sainsburyIcon.png" alt="SainsburyImage">
+      </div>
+    </div>
+    </div>
+
+
+  <footer>
+    <div class="container">
+      <p>Nathan Hanley, B00728955, Computer Science</p>
+    </div>
+  </footer>

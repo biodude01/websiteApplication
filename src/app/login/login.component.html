@@ -1,0 +1,17 @@
+<div class="loginPanel">
+    <h2>Login</h2>
+    <p class="loginWarning" style="color: crimson;display: none; position: absolute; bottom: 20px;"></p>
+    <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="loginFormData.username">
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="loginFormData.password">
+      </div>
+      <br>
+      <button type="submit">Login</button>
+    </form>
+  </div>

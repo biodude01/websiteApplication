@@ -1,0 +1,27 @@
+<div class="accountAlert" style="padding: 20px; display: none; background-color: #a92d2d; color: white; margin-top: 80px;">
+    <div class="closebtn" style="margin-left: 15px; color: white; font-weight: bold; float: right; font-size: 22px; line-height: 20px; cursor: pointer; transition: 0.3s;" onclick="this.parentElement.style.display='none';">&times;</div>
+    Unable to access account- Please login to a valid account first.
+  </div> 
+
+
+<div id ="deletionZone">
+  <div class="listing">
+    <h2>Personalised shopping alert lists</h2>
+    <ul>
+        <li *ngFor="let item of lists" href="" (click)="onclick(item['listID'])">
+            <span class="listName"><label>Name: </label> {{ item["listName"] }}</span>
+            <br>
+            <span class="description"><label>Description: </label>{{ item["description"] }}</span>
+            <br>
+        </li>
+    </ul>
+
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    </div>
+  </div>
+
+
+</div>

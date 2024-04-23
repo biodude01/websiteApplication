@@ -1,0 +1,19 @@
+<div class="registerPanel">
+    <h2>Register</h2>
+    <p class="registerWarning" style="color: crimson;display: none; position: absolute; bottom: 10px;"></p>
+    <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm">
+        <div class="formGroup">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" [(ngModel)]="registerFormData.email" required>
+        </div>
+      <div class="formGroup">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="registerFormData.username" required>
+      </div>
+      <div class="formGroup">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="registerFormData.password" required>
+      </div>
+      <button type="submit" [disabled]="!registerForm.valid">Register</button>
+    </form>
+  </div>

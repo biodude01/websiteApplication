@@ -1,0 +1,171 @@
+.searchContainer {
+  max-width: 600px;
+  margin: 80px auto; 
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.searchContainer input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.checkboxContainer {
+  margin-bottom: 10px;
+
+}
+
+.checkboxContainer label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.categoryBar {
+  height: 50px; 
+  margin-bottom: 10px;
+  font-size: 20px;
+
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+.searchResults {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-gap: 20px;
+  grid-row-gap: 40px;
+}
+
+header, footer {
+  background-color: #003f6b;
+  width: 99%;
+  color: #fff;
+  padding: 5px 0;
+  margin: 0 auto;
+  text-align: center; 
+  font-size: 15px;
+
+}
+
+
+
+.resultItem img {
+  width: 60%;
+  height: 60%;
+  margin-bottom: 10px;
+}
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.price {
+  margin-right: 12px; 
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+}
+
+.panel {
+  background-color: #2a1919;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 80%;
+  padding: 20px;
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  z-index: 10000; 
+}
+.close-button {
+  position: absolute;
+  top: 10px; 
+  right: 10px;
+  background: white;
+  border: 1px solid #000000; 
+  color: #ff0000; 
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  line-height: 1; 
+  text-align: center;
+  cursor: pointer;
+  z-index: 10001;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.close-button:hover {
+  background-color: #c69898; 
+}
+
+.content {
+
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}

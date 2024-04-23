@@ -1,0 +1,50 @@
+ <!--<div id="overlay" style="display: none;">
+    <div class="panel">
+      <button class="close-button" (click)="close()">&times;</button>
+      <div class="comparison-container">
+      <div class="comparison-container">
+        <div class="ingredient-comparison">
+          <h2>Ingredient Comparison</h2>
+            <h2>{{productAnalysis['latestDate']}} Ingredients:</h2>
+              <li>
+                {{productAnalysis['latestList']}}
+              </li>
+      
+            <h2>Missing Ingredients:</h2>
+              <li style="color: red;">
+                {{ productAnalysis['missingIngredients'] }}
+
+              </li>
+            <h2>New Ingredients:</h2>
+              <li style="color: chartreuse;">
+                {{ productAnalysis['newIngredients'] }}
+              </li>
+
+              <h2>{{productAnalysis['earliestDate']}} Ingredients:</h2>
+              <li>
+                {{productAnalysis['earliestList']}}
+              </li>
+
+              <h2>Sources:</h2>
+              <li>
+                {{productAnalysis['latestSource']}}
+              </li>
+              <li>
+                {{productAnalysis['earliestSource']}}
+              </li>
+           
+          <div class="ingredient-summary">
+
+          </div>
+
+        </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>{{ currentPage }} / {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div> -->
