@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { Route } from '@angular/router';
+import { routes } from './app.routes';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -33,7 +34,11 @@ export class AppComponent {
 
   activeLink: string | null = null;
   
-  constructor(private webService: WebService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private webService: WebService, private router: Router, private route: ActivatedRoute) {
+
+    this.router.config = routes;
+    
+  }
 
 
     ngOnInit() {

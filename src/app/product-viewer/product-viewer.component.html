@@ -1,9 +1,9 @@
  <!--<div id="overlay" style="display: none;">
     <div class="panel">
-      <button class="close-button" (click)="close()">&times;</button>
-      <div class="comparison-container">
-      <div class="comparison-container">
-        <div class="ingredient-comparison">
+      <button class="closeButton" (click)="close()">&times;</button>
+      <div class="comparisonContainer">
+      <div class="comparisonContainer">
+        <div class="ingredientComparison">
           <h2>Ingredient Comparison</h2>
             <h2>{{productAnalysis['latestDate']}} Ingredients:</h2>
               <li>
@@ -33,7 +33,7 @@
                 {{productAnalysis['earliestSource']}}
               </li>
            
-          <div class="ingredient-summary">
+          <div class="ingredientSummary">
 
           </div>
 
@@ -48,3 +48,95 @@
     <span>{{ currentPage }} / {{ totalPages }}</span>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
 </div> -->
+
+<button class="backButton" style="color: blue;">Back</button>
+<div class="productImage">
+<img srcset="">
+</div>
+
+<div class="productDetails">
+  <div class="productTitle">
+<h1>New sample title</h1>
+  </div>
+  <img src="" alt="Tiny Image" class="storeIcon">
+  <div class="priceTag">
+    <p>$1.00</p>
+    </div>
+</div>
+
+<div class="productDescription">
+<p>This is random text</p>
+</div>
+
+<div class="AddListDropdown">
+  <button>Add to List</button>
+</div>
+
+<!-- netcontent section -->
+
+
+<div class="historicalPriceChanges">
+  <h2>Historical Price Changes</h2>
+  <!-- Interactable JS chart here -->
+
+  <div class="priceSections">
+
+  </div>
+</div>
+
+<!-- netcontent section -->
+
+
+<div class="netContentChanges">
+  <h2>Net Content Examination</h2>
+  <div class="netContentBox">
+      <!-- Box 1 content here -->
+  </div>
+  <div class="netContentBox">
+      <!-- Box 2 content here -->
+  </div>
+  <div class="netContentBox">
+      <!-- Box 3 content here -->
+  </div>
+</div>
+
+
+<!-- Ingredient section -->
+
+<div class="ingredientChanges">
+  <h2>Ingredient Changes</h2>
+  <div class="ingredientRectangle">
+    <h3>Ingredient list as of </h3>
+    <div class="ingredientContainer">
+
+      </div>
+      </div>
+    </div>
+<br>
+<h3>Added Ingredients</h3>
+<div class="ingredientContainer">
+<div class="ingredientAdditions">
+  <div class="ingredientRectangle">
+  </div>
+  </div>
+</div>
+<h2>Removed Ingredients</h2>
+<div class="ingredientContainer">
+  <div class="ingredientRectangle">
+
+
+  </div>
+</div>
+
+<!-- Source section -->
+
+  <h2>Listings</h2>
+  <div class="listings">
+<ul>
+<li> </li>
+
+
+
+</ul>
+
+</div>

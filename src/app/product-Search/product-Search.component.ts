@@ -57,12 +57,12 @@ export class productSearchComponent {
   }
 
 
-onclick(product: any){
-  const hider = document.getElementById('overlay') as HTMLElement; //Initially hides search related structures
-  hider.style.display = 'block';
-
-  const chartElement = document.getElementById('inflationChart') as HTMLCanvasElement;
-  let productData = product['historicalData']
+onclick(store: any, id: any){
+  //const hider = document.getElementById('overlay') as HTMLElement; //Initially hides search related structures
+  //hider.style.display = 'block';
+ // const chartElement = document.getElementById('inflationChart') as HTMLCanvasElement;
+console.log(id, store)
+this.router.navigate(['/productSearch', store, id]);
 
 
 

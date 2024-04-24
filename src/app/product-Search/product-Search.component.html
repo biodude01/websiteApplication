@@ -33,7 +33,7 @@
 
 
     <div class="searchResults" *ngFor="let product of searchResults">
-      <div class="resultItem" href (click)="onclick(product)">
+      <div class="resultItem" href (click)="onclick(product['storeOrigin'], product['id'])">
         <img src={{product.productImage}}>
         <h2><a>{{product.productName}}</a></h2>
         <span class="price">{{product.historicalData[0].productPrice}}</span>

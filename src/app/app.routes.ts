@@ -13,6 +13,8 @@ import { InformationPageComponent } from './information-page/information-page.co
 import { StatisticPageComponent } from './statistic-page/statistic-page.component';
 import { ProductViewerComponent } from './product-viewer/product-viewer.component';
 
+
+
 export const routes: Routes = 
 [
         { path: 'shoppingList', component: ShoppingListComponent },
@@ -29,3 +31,10 @@ export const routes: Routes =
         { path: '**', redirectTo: 'productSearch'},
         
       ];
+
+      @NgModule({
+        imports: [RouterModule.forRoot(routes)],
+        exports: [RouterModule]
+      })
+      export class AppModule { }
+      
