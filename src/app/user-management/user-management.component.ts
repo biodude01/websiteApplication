@@ -10,7 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-user-management',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './user-management.component.html',
   styleUrl: './user-management.component.css'
 })
