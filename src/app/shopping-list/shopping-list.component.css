@@ -122,3 +122,33 @@
   font-weight: bold;
   color: #67cb03;
 }
+
+.deleteListButton {
+
+float: right; 
+background-color: #a92d2d; 
+border: 1px solid #000000;
+
+}
+
+.deleteListButton:hover {
+
+  background-color: #a92d2d; 
+
+}
+
+.updateListButton{ 
+  
+  float: right; 
+  background-color:chartreuse;
+  color:beige;
+  border: 1px solid #000000;
+
+}
+
+.updateListButton:hover{
+
+
+  background-color:rgb(55, 83, 26);
+
+}

@@ -24,6 +24,7 @@ export class ShoppingListComponent {
   currentPage: number = 1; 
   totalPages: number = 0; 
   pagedItems: any;
+  check: any;
 
 
   constructor(public webService: WebService, private router: Router) {
@@ -34,9 +35,9 @@ export class ShoppingListComponent {
   ngOnInit() {
     const form = new FormData();
     const warning = document.getElementsByClassName('accountAlert').item(0) as HTMLElement; //Warns user about missing data
-    let check = String(localStorage.getItem('x-access-token'));
-    form.append('x-access-token', check);
-    if (check == 'null'){
+    this.check = String(localStorage.getItem('x-access-token'));
+    form.append('x-access-token', this.check);
+    if (this.check == 'null'){
     console.log("Missing token: user appears to not be logged in.")
     warning.innerText = "You need to be logged in to see this screen"
     warning.style.display = 'block'; 
@@ -58,15 +59,18 @@ export class ShoppingListComponent {
    // this.updatePagedItems();
 
 }
-deleteList(event: Event){
+deleteList(event: Event, listID: any){
   event.stopPropagation(); //Added to stop the clickable list from firing off as well.
-
+  const form = new FormData();
+  console.log(listID)
+  form.append('x-access-token', this.check);
+  this.webService.deleteList(form,listID)
 
 }
 
 goToUpdate(event: Event){
   event.stopPropagation(); //Added to stop the clickable list from firing off as well.
-  
+
 }
 
 

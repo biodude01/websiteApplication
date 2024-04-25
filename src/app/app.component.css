@@ -29,6 +29,9 @@ ul {
 
 li {
   float: left;
+  color: white;
+  text-align: center;
+
 }
 
 li a {
@@ -61,3 +64,4 @@ li a:hover:not(.active) {
     padding: 15px 20px;
   }
 }
+

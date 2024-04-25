@@ -68,13 +68,10 @@
 
 
 
-
-
-
 <button class="backButton" (click)="goBack()">Back</button>
 <div class="productInfo">
   <div class="imageContainer">
-    <img style="border: 1px solid #000000; vertical-align: middle;" src={{productData.productImage}} alt="productImage">
+    <img class='productImage' style="border: 1px solid #000000; vertical-align: middle;" src={{productData.productImage}} alt="productImage">
   </div>
   <div class="detailsContainer">
     <h1>{{productData.productName}}</h1>
@@ -91,16 +88,22 @@
 </div>
 
 
-
-
-<div class="historicalPriceChanges">
-  <h2>Historical Price Changes</h2>
-
-
-  <div class="priceSections">
-
-  </div>
+<div class="chartContainer">
+<h2>Historical Price Changes</h2>
+<canvas style="background-color: rgb(255, 255, 255);" width="200" height="200" id="lineChart"></canvas>
 </div>
+</div>
+
+<div class="priceFacts">
+<label class='lowestCost'>Lowest cost: £</label>
+<br>
+<label class='highestCost'>Highest cost: £</label>
+<br>
+<label class='averageCost'>average cost: £</label>
+<br>
+<label class='inflationText'>Inflation rates have risen by:</label>
+</div>
+
 
 
 

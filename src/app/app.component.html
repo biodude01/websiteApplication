@@ -9,6 +9,7 @@
         <li><a *ngIf="loginCheck === false" routerLink="/login" [class.active]="activeLink  === '/login'" (click)="activeClick('/login')">Login</a></li>
         <li><a *ngIf="loginCheck === false" routerLink="/register" [class.active]="activeLink  === '/register'" (click)="activeClick('/register')">Register</a></li>
         <li><a (click)="onLogout()" *ngIf="loginCheck ===true">Logout</a></li>
+        <li style="padding-top: 22px;padding-left: 200px; font-size:x-large;">Product Investigator</li>
       </nav>
     </ul>
   </header>
