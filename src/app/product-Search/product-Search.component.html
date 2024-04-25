@@ -27,22 +27,23 @@
   <div id="searchArea" style="display: none;">
   <header>
     <div class="container">
-      <h1>Search Results for {{ searchTerm }} </h1>
+      <h1>Search Results for {{ searchTerm }}:</h1>
     </div>
   </header>
+  </div>
 
-
-    <div class="searchResults" *ngFor="let product of searchResults">
-      <div class="resultItem" href (click)="onclick(product['storeOrigin'], product['id'])">
-        <img src={{product.productImage}}>
+    <div class="gridArea">
+    <div class="searchResults" href (click)="onclick(product['storeOrigin'], product['id'])" *ngFor="let product of searchResults">
+        <img style="width: 350px; height: 250px; border: 1px solid #000000; vertical-align: right; justify-content: center; align-items: center;" src={{product.productImage}}>
         <h2><a>{{product.productName}}</a></h2>
         <span class="price">{{product.historicalData[0].productPrice}}</span>
-        <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="product.storeOrigin === 'asda'" src="/assets/asdaIcon.png" alt="AsdaImage">
+        <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle; padding-top: 10px;" *ngIf="product.storeOrigin === 'asda'" src="/assets/asdaIcon.png" alt="AsdaImage">
         <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="product.storeOrigin === 'tesco'" src="/assets/tescoIcon.png" alt="TescoImage">
         <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="product.storeOrigin === 'sainsbury'" src="/assets/sainsburyIcon.png" alt="SainsburyImage">
       </div>
+
     </div>
-    </div>
+  
 
 
   <footer>

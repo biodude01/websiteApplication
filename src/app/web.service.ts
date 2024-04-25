@@ -121,7 +121,7 @@ console.log(data)
 
 getAccountDetails(body: any){
 
-   return lastValueFrom(this.http.get(
+   return lastValueFrom(this.http.post(
     'http://127.0.0.1:5000/api/v1.0/account', body
     ))
 

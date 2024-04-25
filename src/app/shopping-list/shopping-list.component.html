@@ -10,8 +10,11 @@
     <ul>
         <li *ngFor="let item of lists" href="" (click)="onclick(item['listID'])">
             <span class="listName"><label>Name: </label> {{ item["listName"] }}</span>
+            <button style="float: right; background-color:chartreuse;color:beige; border: 1px solid #000000; " (click)="goToUpdate($event)">UPDATE</button>
+            <br>
             <br>
             <span class="description"><label>Description: </label>{{ item["description"] }}</span>
+            <button style="float: right; background-color: #a92d2d; border: 1px solid #000000;" (click)="deleteList($event)">DELETE</button>
             <br>
         </li>
     </ul>

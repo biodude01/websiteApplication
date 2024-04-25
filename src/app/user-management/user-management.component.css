@@ -1,0 +1,41 @@
+form {
+    margin-bottom: 20px;
+    width: 100%; 
+    max-width: 400px; 
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4c77af;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #deletionZone {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 20px;
+    grid-row-gap: 40px;
+  
+  }
+  

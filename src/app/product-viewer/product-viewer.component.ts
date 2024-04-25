@@ -24,6 +24,7 @@ export class ProductViewerComponent {
   productID: any;
   storeName: any;
   productData: any;
+  userLists: any;
 
   constructor(public webService: WebService, public router: Router, private route: ActivatedRoute) {
 
@@ -43,14 +44,55 @@ export class ProductViewerComponent {
       this.productAnalysis = data[0];
       console.log(this.productAnalysis)
       this.productData = this.productAnalysis['product']
-  
+      console.log(this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice'])
+
+      //The following is a simple price data cleanup. Could be applied to the data directly
+      if (/^\d{1,2}p$/.test(this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice'])) { //checks for 2 digit numbers with p symbols
+          
+        let digits = this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice'].match(/\d+/)[0]; // Add 0. before the digits for calculations.
+        this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice'] = '0.' + digits;
+        console.log("cost:", this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice']);
+
+    }
+    else{
+      //this is for prices not suspected of being penny sums, however there is need to ensure they have .00 figures at the end.
+      this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice'] = parseFloat(this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice'].match(/\d+(\.\d+)?/g)).toFixed(2)
+      console.log("cost:", this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice']); 
+    }
+
       },
     (error) => {
       console.error('Error occured: ', error);
     })
+    const form = new FormData();
+    let check = String(localStorage.getItem('x-access-token'));
+    form.append('x-access-token', check);
+
+    this.webService.retrieveUserLists(form).subscribe((data) => {
+      console.log('Search results:', data);
+      this.userLists = data;
+    },
+    (error) => {
+      console.error('Error occured: ', error);
+    });
   
     }
+  
+
+  goBack(){
+
+    history.back();
+
+  }
+
+  addToList(){
+
+
+  }
+
+  addToNewList(){
+    
   }
 
 
-
+}

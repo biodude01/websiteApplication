@@ -58,6 +58,16 @@ export class ShoppingListComponent {
    // this.updatePagedItems();
 
 }
+deleteList(event: Event){
+  event.stopPropagation(); //Added to stop the clickable list from firing off as well.
+
+
+}
+
+goToUpdate(event: Event){
+  event.stopPropagation(); //Added to stop the clickable list from firing off as well.
+  
+}
 
 
   nextPage() {

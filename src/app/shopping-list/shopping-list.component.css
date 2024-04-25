@@ -4,14 +4,10 @@
     margin: 20px auto;
   }
   
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
   
   li {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #c4bfbf;
     margin-bottom: 5px;
   }
   
@@ -35,7 +31,7 @@
   }
   
   .pagination button[disabled] {
-    background-color: #ccc;
+    background-color: #dedede;
     cursor: not-allowed;
   }
   
@@ -49,7 +45,7 @@
 
 .listing h2 {
   font-size: 24px;
-  color: #333;
+  color: #444141;
   margin-bottom: 10px;
 }
 
@@ -75,23 +71,23 @@
 }
 
 .listing li .description {
-  color: #666;
+  color: #5e5e5e;
 }
 
 .listing li .list {
-  color: #999;
+  color: #817d7d;
 }
 
 .listing {
-  background-color: #97c3f3;
+  background-color: #91bceb;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .listing h2 {
-  font-size: 24px;
-  color: #333;
+  font-size: 25px;
+  color: #373434;
   margin-bottom: 10px;
 }
 
@@ -101,7 +97,7 @@
 }
 
 .listing li {
-  background-color: #fff;
+  background-color: #eeebeb;
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -114,15 +110,15 @@
 
 .listing li .listName {
   font-weight: bold;
-  color: #ff6600; 
+  color: #f46709; 
 }
 
 .listing li .description {
   font-weight: bold;
-  color: #0099cc; 
+  color: #079acc; 
 }
 
 .listing li .list {
   font-weight: bold;
-  color: #66cc00;
+  color: #67cb03;
 }

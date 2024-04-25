@@ -67,7 +67,6 @@ async onRegisterSubmit(){
 
   }
 
-
   
     warning.style.display = "none"
 

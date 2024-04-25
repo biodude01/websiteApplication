@@ -49,29 +49,44 @@
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
 </div> -->
 
-<button class="backButton" style="color: blue;">Back</button>
+<div class="productInitialData">
+<div class="leftSide">
+<button class="backButton" (click)="goBack()" style="background-color: blue; top: 1000px;">Back</button>
 <div class="productImage">
-<img srcset="">
+  <img src={{productData.productImage}}>
 </div>
-
-<div class="productDetails">
-  <div class="productTitle">
-<h1>New sample title</h1>
+  <div class="dropdown">
+    <button class="dropbtn" onclick="myFunction()">Add to List</button>
+    <div class="dropdown-content" id="myDropdown" *ngFor="let product of userLists">
+      <a (click)="addToList()">{{product.listName}}</a>
+      <a (click)="addToNewList()">+ create new list</a>
+    </div>
+    </div> 
   </div>
-  <img src="" alt="Tiny Image" class="storeIcon">
-  <div class="priceTag">
-    <p>$1.00</p>
+
+<div class="rightSide">
+<div class="productName">
+<h1>{{productData.productName}}</h1>
+<br><br>
+</div>
+<div class="storeImage">
+<br>
+<br><img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="productData.storeOrigin === 'asda'" src="/assets/asdaIcon.png" alt="AsdaImage">
+<br><img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="productData.storeOrigin === 'tesco'" src="/assets/tescoIcon.png" alt="TescoImage">
+<br><img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="productData.storeOrigin === 'sainsbury'" src="/assets/sainsburyIcon.png" alt="SainsburyImage">
+</div>
+<br>
+<div class="priceTag">
+    <p>£{{this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice']}}</p>
     </div>
 </div>
-
+<br>
 <div class="productDescription">
-<p>This is random text</p>
+<p>{{this.productData['productDescription']}}</p>
 </div>
-
-<div class="AddListDropdown">
-  <button>Add to List</button>
 </div>
-
+<br>
+<br>
 <!-- netcontent section -->
 
 
@@ -106,13 +121,18 @@
 <div class="ingredientChanges">
   <h2>Ingredient Changes</h2>
   <div class="ingredientRectangle">
-    <h3>Ingredient list as of </h3>
+    <h3>Ingredient list as of {{this.productData['historicalData'][this.productData['historicalData'].length - 1]['sourceDate']}}</h3>
     <div class="ingredientContainer">
 
       </div>
       </div>
     </div>
 <br>
+<div class="ingredientRectangle">
+<h3>Ingredient list as of {{this.productData['historicalData'][0]['sourceDate']}}</h3>
+<div class="ingredientContainer">
+    </div>
+    </div>
 <h3>Added Ingredients</h3>
 <div class="ingredientContainer">
 <div class="ingredientAdditions">

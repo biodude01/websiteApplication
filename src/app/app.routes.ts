@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule} from '@angular/router';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { AdminManagementComponent } from './admin-management/admin-management.component';
 import { productSearchComponent } from './product-Search/product-Search.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -19,7 +18,6 @@ export const routes: Routes =
 [
         { path: 'shoppingList', component: ShoppingListComponent },
         { path: 'userAccount', component: UserManagementComponent },
-        { path: 'Admin', component: AdminManagementComponent },
         { path: 'login', component: LoginComponent },
         { path: 'register', component: RegisterComponent },
         { path: 'productSearch', component: productSearchComponent },

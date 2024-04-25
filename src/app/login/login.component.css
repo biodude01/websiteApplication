@@ -4,18 +4,13 @@
   top: 50%;
   left: 50%; 
   transform: translate(-50%, -70%); 
-  background-color: #894b4b;
+  background-color: #346393;
   padding: 80px;
   border-radius: 8px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   border: 6px solid #3a0202;  
   z-index: 1; 
-}
-
-.login h2 {
-  margin-bottom: 40px;
-  color: #333; 
 }
 
 .loginWarning {
