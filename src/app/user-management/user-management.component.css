@@ -5,7 +5,7 @@ form {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #045dc9;
   }
   
   label {
@@ -29,6 +29,21 @@ form {
     color: white;
     cursor: pointer;
   }
+
+  button:hover {
+    background-color: #023162;
+  }
+
+.deleteAccountButton{
+    background-color: #a92d2d;
+}
+
+.deleteAccountButton:hover{
+
+    background-color: #1b0000;
+
+}
+
   
   #deletionZone {
     text-align: center;

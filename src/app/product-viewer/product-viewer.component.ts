@@ -81,7 +81,7 @@ export class ProductViewerComponent {
 
   goBack(){
 
-    history.back();
+    history.back(); //sends the user back to the previous page
 
   }
 
@@ -91,7 +91,22 @@ export class ProductViewerComponent {
   }
 
   addToNewList(){
-    
+
+  }
+
+  openListChoice(){
+
+
+  }
+
+  addListClose(){
+
+
+  }
+
+  dropListClose(){
+
+
   }
 
 

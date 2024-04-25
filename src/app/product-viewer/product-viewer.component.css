@@ -1,40 +1,5 @@
-body {
-    margin: 20px;
-    padding-top: 70px;
-}
-
-.productImage {
-    border: 1px solid #ccc;
-    padding: 10px;
-    max-width: 40%;
-    height: 40%;
-
-}
-
-.priceTag {
-    font-size: 16px;
-}
-
-.productDescription {
-    font-size: 14px;
-    margin-top: 10px;
-}
 
 
-.productInitialData {
-    display: flex;
-    align-items: flex-start; 
-  }
-  
-  .leftSide {
-    flex: 1; 
-  }
-  
-  .rightSide {
-    flex: 1; 
-    padding-left: 20px; 
-  }
-  
 .dropdown .dropbtn {
     cursor: pointer;
     font-size: 16px;  
@@ -48,6 +13,62 @@ body {
     flex: 1;
 
   }
+
+
+.imageContainer{
+    padding-top: 120px ;
+    max-width: 500px;
+    max-height: 650px;
+    height: 650px;
+    width: 500px;
+
+}  
+
+
+img{
+
+    width: 600px; 
+    height: 550px; 
+    margin-right: 10px; 
+}
+
+.backButton{
+    background-color: rgba(5, 197, 9, 0.605);
+    position: fixed; 
+    top: 100px;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.detailsContainer{
+    position: absolute; 
+    bottom: 350px;
+    right: 100px;
+    width: 50%;
+}
+
+
+.backButton:hover{
+    background-color: rgba(3, 35, 26, 0.605);
+
+
+}
+
+
+.dropbtn{
+    position: absolute;
+    right: 450px;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+
+
+
+
+}
 
 
 .dropdown-content {
@@ -72,62 +93,3 @@ body {
     background-color: #ddd;
   }
   
-
-
-
-
-
-
-
-
-
-.historical-price-changes {
-    margin-top: 20px;
-}
-
-.priceSections {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.netContentChanges {
-    margin-top: 20px;
-}
-
-.netContentBox {
-    width: 30%;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-right: 10px;
-}
-
-.ingredientChanges {
-    margin-top: 20px;
-}
-
-.ingredientRectangle {
-    width: 100%;
-    height: 200px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.netComparsionBoxes {
-    margin-top: 20px;
-}
-
-.netComparsionBoxes {
-    width: 45%;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-right: 10px;
-}
-
-.listings {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-}

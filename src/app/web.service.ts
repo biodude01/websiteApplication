@@ -52,6 +52,34 @@ return lastValueFrom(this.http.delete(url, body))
 }
 
 
+addList(body: any){ //adds a new list with optional product
+    console.log(body)
+    let url =  ('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/')
+    return lastValueFrom(this.http.post(url, body))
+    
+    }
+
+
+insertToList(body: any, listID: any){ //adds product to a list
+        console.log(body)
+        let url =  ('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/' + listID)
+        return lastValueFrom(this.http.post(url, body))
+        
+        }
+
+updateUserList(formData: any,listID: any){
+            console.log(formData, 'and', listID)
+            let url = ('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/' + listID)
+            return this.http.put(url, formData).subscribe((response: any) => {
+            this.searchList = response;
+            console.log(response)
+            return response
+            
+ })
+            
+}
+
+
 adminCheck(body: any){ //checks roles of the user
 
     return this.http.get(
@@ -68,18 +96,7 @@ productAnalysis(url: any): Observable<any>{
     return (this.http.get('http://127.0.0.1:5000/api/v1.0/product/searchQuery/productAnalyzer/' + url))
 }
 
-updateUserList(formData: any,listID: any){
-console.log(formData, 'and', listID)
-    let url = ('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/' + listID)
-    return this.http.put(url, formData
-        ).subscribe((response: any) => {
-            this.searchList = response;
-            console.log(response)
-            return response
 
-            })
-
-}
 
 
 async login(body: any) { //Retrieves login detail confirmation, but needs a async delay for verification.
