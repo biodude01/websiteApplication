@@ -29,9 +29,7 @@ export class ProductViewerComponent {
   dateList: any = [];
   priceList: any = [];
   priceListSample:any;
-  productReport = {
-    description : ''
-  };
+
 
 
   constructor(public webService: WebService, public router: Router, private route: ActivatedRoute) {
@@ -41,7 +39,7 @@ export class ProductViewerComponent {
   ngOnInit()  {
 
     this.productID = this.route.snapshot.paramMap.get('id');
-    this.storeName = this.route.snapshot.paramMap.get('store');
+    this.storeName = this.route.snapshot.paramMap.get('store'); //Grabbing data from route
     console.log(this.productID);
 
     let url = this.storeName + '=' + this.productID;
@@ -80,6 +78,7 @@ export class ProductViewerComponent {
     this.priceList[i] = parseFloat(this.priceList[i]);
   }
 
+//This section focuses on chart building via dates and pricing lists
   const ctx = document.getElementById('lineChart') as HTMLCanvasElement;
   this.chart = new Chart(ctx, {
     type: 'line',
@@ -98,6 +97,40 @@ export class ProductViewerComponent {
   });
 
   this.chart.update();
+
+//This section focuses on manipulating and sorting net content data
+
+  const latestNetContent = parseInt(this.productData['historicalData'][this.productData['historicalData'].length - 1]['productQuantity'].match(/\d+/g));
+  const quantityVal = this.productData['historicalData'][this.productData['historicalData'].length - 1]['productQuantity'].match(/[a-zA-Z]+/g);
+  const earliestNetContent = parseInt(this.productData['historicalData'][0]['productQuantity'].match(/\d+/g));
+  console.log(latestNetContent, quantityVal, earliestNetContent)
+
+  let netContentText = (earliestNetContent - latestNetContent) + quantityVal;
+  console.log(netContentText)
+
+ let netContentBox = document.getElementsByClassName('netContentDifference').item(0) as HTMLElement;
+  
+ netContentBox.innerText = netContentText
+
+//This section focuses on manipulating price data
+
+const lowestPrice: number = Math.min(...this.priceList);
+
+let sum: number = 0;
+for (let i = 0; i < this.priceList.length; i++) {
+  sum += this.priceList[i];
+}
+const averagePrice: number = sum / this.priceList.length;
+
+const maximumPrice: number = Math.max(...this.priceList);
+
+let maxPriceBox = document.getElementsByClassName('highestCost').item(0) as HTMLElement;
+let lowestPriceBox = document.getElementsByClassName('lowestCost').item(0) as HTMLElement;
+let averagePriceBox = document.getElementsByClassName('averageCost').item(0) as HTMLElement;
+maxPriceBox.innerText = 'Highest ever cost: £' + String(maximumPrice)
+lowestPriceBox.innerText = 'Lowest ever cost: £' + String(lowestPrice)
+averagePriceBox.innerText = 'average cost overall: £'+ String(averagePrice)
+
 
       },
     (error) => {
@@ -121,10 +154,6 @@ export class ProductViewerComponent {
     console.log('Price list',this.priceList)
     console.log('datelist',this.dateList)
 
-
-
-
-
     console.log('chartlabel', this.chart.data.labels)
     console.log('chartdata', this.chart.data.datasets)
 
@@ -135,11 +164,39 @@ export class ProductViewerComponent {
 
 
 
-reportProduct(){
+reportProduct(details: any){
+
+const form = new FormData();
+const reportPanel = details.target;
+const productName = reportPanel.querySelector('.description').textContent;
+const reportDescription = reportPanel.querySelector('textarea[name="reportDescription"]').value;
+
+console.log('Product Name:', productName);
+console.log('Report Description:', reportDescription);
+
+form.append('productName', this.productData.productName)
+form.append('productID', this.productData.id)
+form.append('userReport', reportDescription)
 
 
+this.webService.reportProduct(form)
+
+let panel = document.getElementsByClassName('reportPanel').item(0) as HTMLElement;
+panel.style.display = 'none'
 
 }
+
+closeReport(){
+ let panel = document.getElementsByClassName('reportPanel').item(0) as HTMLElement;
+ panel.style.display = 'none'
+
+}
+
+openReport(){
+  let panel = document.getElementsByClassName('reportPanel').item(0) as HTMLElement;
+  panel.style.display = 'block'
+ 
+ }
   
   
 

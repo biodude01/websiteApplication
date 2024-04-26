@@ -1,6 +1,6 @@
 
 
-.dropdown .dropbtn {
+.dropdown .dropbutton {
     cursor: pointer;
     font-size: 16px;  
     border: none;
@@ -66,24 +66,50 @@
   }
 
 
-.dropbtn{
+.dropbutton{
     position: absolute;
-    right: 450px;
+    right: 430px;
     padding: 10px;
     padding-left: 10px;
     padding-right: 10px;
-
-
-
+    background-color: aquamarine;
 
 }
+.dropbutton:hover{
+
+    background-color: #007bff;
+}
+
+.reportButton{
+
+
+        position: absolute;
+        right: 260px;
+        padding: 10px;
+        background-color:#804b4b;
+        color: #ffffff;
+        font-weight: bold;
+
+    
+    }
+
+.reportButton:hover{
+
+
+
+        background-color:#cf4646;
+        color: #c9c9c9;
+
+    
+    }
+
+
 
 h1{
 
     color: #ddd;
 
 }
-
 
 
 h2{
@@ -94,8 +120,10 @@ h2{
 h3{
 
     color: #ddd;
+    text-align: center;
 
 }
+
 
 
 
@@ -137,9 +165,18 @@ label{
     width: 100%;
     height: 300px; 
     position: absolute;
-    right: -510px;
-    bottom: -110px;
+    left: 100px;
+    bottom: -90px;
 
+  }
+
+canvas{
+
+    position: absolute;
+}
+
+  .chartContainer h2 {
+    text-align: left;
   }
 
   .priceFacts{
@@ -147,5 +184,168 @@ label{
     float: right; 
     padding: 20px; 
     position: absolute;
-    right: 300px
+    right: 450px;
+    bottom: -130px;
+    font-size: large;
+    font-weight: bold;
+  }
+
+
+  .netContentChanges {
+    margin-top: 20px; 
+    bottom: -200px;
+
+  }
+  
+  .netContentChanges h2 {
+    text-align: center;
+  }
+  
+  .netContentGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+  }
+  
+  .netContentBox {
+    background-color: #f0f0f0; 
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    border: 5px solid #000000;
+
+  }
+  
+  .mainFigure {
+    font-size: 24px; 
+    font-weight: bold;
+  }
+  
+
+  .netContentBox h3 {
+    margin-bottom: 10px;
+    color: #333; 
+  }
+  
+  .netContentDifference{
+  font-size: 24px; 
+  font-weight: bold;
+  }
+
+  .even {
+    background-color: #c9c9c9; 
+  }
+  
+  .odd {
+    background-color: #504f4f; 
+  }
+
+
+.IngredientBox
+{
+  width: 90%;
+  background-color: #f7f1f1;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin: 20px auto;
+  border-radius: 5px;
+  font-size: 20px; 
+  border: 5px solid #000000;
+
+
+}
+
+.sourceList {
+    width: 90%;   
+    overflow-y: auto;
+    background-color: white;
+    padding: 10px;
+    border: 5px solid #000000;
+    border-radius: 5px;
+    margin: auto;
+  }
+  
+  .sourceTable {
+    width: 100%;
+    border-collapse: collapse;
+    list-style-type: disc;
+  }
+  
+  .sourceTable td {
+    border-bottom: 4px solid #ccc;
+    padding: 10px;
+    list-style-type: disc;
+
+  }
+  
+  .reportPanel {
+    display: none;
+    position: fixed;
+    right: 400px;
+    top: 250px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+
+    border: 2px solid #333;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 9999; 
+    max-width: 80%;
+  }
+  
+  .reportPanel h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #461919;
+  }
+  
+  .reportPanel .description {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #000000;
+  }
+  
+  .reportPanel .notice {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #000000;
+
+  }
+  
+  .reportPanel-form {
+    margin-bottom: 10px;
+    color: #000000;
+
+  }
+  
+  .panelForm textarea {
+    width: 97%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    color: #000000;
+
+  }
+  
+  .panelForm .buttons {
+    text-align: center;
+  }
+  
+  .panelForm .buttons button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .panelForm .buttons button:hover {
+    background-color: #0056b3;
   }

@@ -8,7 +8,6 @@ import { productSearchComponent } from './product-Search/product-Search.componen
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ListViewerComponent } from './list-viewer/list-viewer.component';
-import { InformationPageComponent } from './information-page/information-page.component';
 import { StatisticPageComponent } from './statistic-page/statistic-page.component';
 import { ProductViewerComponent } from './product-viewer/product-viewer.component';
 
@@ -23,7 +22,6 @@ export const routes: Routes =
         { path: 'productSearch', component: productSearchComponent },
         { path: 'productSearch/:store/:id', component: ProductViewerComponent },
         { path: 'shoppingList/:id', component: ListViewerComponent},
-        { path: 'information', component: InformationPageComponent},
         { path: 'statistics', component: StatisticPageComponent},
         { path: '', redirectTo: 'productSearch', pathMatch: 'full'},
         { path: '**', redirectTo: 'productSearch'},

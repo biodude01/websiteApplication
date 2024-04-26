@@ -51,6 +51,13 @@ return lastValueFrom(this.http.delete(url, body))
 
 }
 
+reportProduct(body: any){ //sends a new user report
+
+    return lastValueFrom(this.http.post('http://127.0.0.1:5000/api/v1.0/product/searchQuery/productReport', body))
+
+}
+
+
 
 addList(body: any){ //adds a new list with optional product
     console.log(body)

@@ -25,6 +25,7 @@ ul {
   left: 0;
   background: linear-gradient(to top left, #222d32, #376082);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+  z-index: 99999;
 }
 
 li {

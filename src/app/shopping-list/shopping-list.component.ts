@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
+declare let html2pdf: any;
 
 @Component({
   selector: 'app-shopping-list',
@@ -97,6 +98,18 @@ goToUpdate(event: Event){
 onclick(data: any) {
   let url = 'shoppingList/' + data
   this.router.navigate([url]);
+
+}
+
+
+generatePDF(){ //generates a user report for users capturing everything on screen.
+
+  const currentDateTime = new Date(); //sets file names to the date and time
+  const contentContainer = document.getElementById('contentZone');
+  html2pdf()
+  .from(contentContainer)
+  .save(currentDateTime);
+
 
 }
 
