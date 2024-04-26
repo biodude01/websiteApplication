@@ -4,15 +4,14 @@
     <div class="closebtn" style="margin-left: 15px; color: white; font-weight: bold; float: right; font-size: 22px; line-height: 20px; cursor: pointer; transition: 0.3s;" onclick="this.parentElement.style.display='none';">&times;</div>
     Unable to access account- Please login to a valid account to access and create customised watch lists.
   </div> 
-
-
+  
 <div id ="deletionZone">
   <div class="listing">
     <h2>Personalised shopping alert lists</h2>
     <ul>
         <li *ngFor="let item of lists" href="" (click)="onclick(item['listID'])">
             <span class="listName"><label>Name: </label> {{ item["listName"] }}</span>
-            <button class="updateListButton" (click)="goToUpdate($event)">UPDATE</button>
+            <button class="updateListButton" (click)="goToUpdate($event, item['listID'])">UPDATE</button>
             <br>
             <br>
             <span class="description"><label>Description: </label>{{ item["description"] }}</span>
@@ -29,9 +28,36 @@
   </div>
 
 
+
 </div>
+<div id="updateArea" >
+  <button class="backButton" (click)="goBack()">Back</button>
+  <h2>Editing: {{lists[0].listName}}</h2>
+  <form class="updateForm" (ngSubmit)="updateList($event)">
+    <input style="width: 260px; height: 30px; font: large;" type="text" id="listName" name="listName" placeholder="Insert new list name here" [(ngModel)]="updateForm.listName">
+    <br>
+    <br>
+      <textarea style="width: 360px" rows="4" name="description" id="description" type="text"  placeholder="Enter new description" [(ngModel)]="updateForm.description" ></textarea>
+      <div class="buttons">
+        <button class='submitButton'  type="submit">Submit</button>
+      </div>
 
+  </form>
+  <ul>
+      <li  *ngFor="let item of lists[0]['list']" href="" (click)="onclick(item['id'])">
+          <span class="listName"><label>product Name: {{ item['productName'] }} </label></span>
+          <span class="listName"><label>Store: </label> {{ item["storeOrigin"] }}</span>
+          <br>
+          <span class="description"><label>Description: </label>{{ item["productDescription"] }}</span>
+          <br>
+          <br>
+          <button class="deleteListButton" (click)="updateList($event)">DELETE</button>
+          <br>
+          <br>
+      </li>
+  </ul>
 
+</div>
 
 
 

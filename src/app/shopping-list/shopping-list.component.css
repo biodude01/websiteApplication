@@ -4,7 +4,29 @@
     margin: 20px auto;
   }
   
-  
+.backButton{
+  background-color:cornflowerblue; 
+  font-size: medium; 
+  padding: auto;
+}
+
+
+  .backButton:hover{
+background-color: #0056b3;
+  }
+.submitButton{
+  background-color:rgb(53, 200, 68); 
+  font-size: medium; 
+  padding: auto;
+}
+
+
+  .submitButton:hover{
+
+background-color: darkgreen;
+
+  }
+
   li {
     padding: 10px;
     border: 1px solid #c4bfbf;
@@ -36,25 +58,27 @@
   }
   
   .listing {
-  background-color: #f7f7f7;
   padding: 20px;
   margin-top: 180px;
+  border-radius: 10px;
+  background-color: #91bceb;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.listing h2 {
+h2 {
   font-size: 24px;
   color: #444141;
   margin-bottom: 10px;
 }
 
-.listing ul {
+ul {
   list-style-type: none;
   padding: 0;
 }
 
-.listing li {
+li {
   background-color: #fff;
   padding: 15px;
   margin-bottom: 10px;
@@ -62,41 +86,35 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.listing li:last-child {
+li:last-child {
   margin-bottom: 0;
 }
 
-.listing li .listName {
+.listName {
   font-weight: bold;
 }
 
-.listing li .description {
+.description {
   color: #5e5e5e;
 }
 
-.listing li .list {
+.list {
   color: #817d7d;
 }
 
-.listing {
-  background-color: #91bceb;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-.listing h2 {
+h2 {
   font-size: 25px;
   color: #373434;
   margin-bottom: 10px;
 }
 
-.listing ul {
+ul {
   list-style-type: none;
   padding: 0;
 }
 
-.listing li {
+li {
   background-color: #eeebeb;
   padding: 15px;
   margin-bottom: 10px;
@@ -133,7 +151,7 @@ border: 1px solid #000000;
 
 .deleteListButton:hover {
 
-  background-color: #a92d2d; 
+  background-color: #481212; 
 
 }
 
@@ -150,5 +168,21 @@ border: 1px solid #000000;
 
 
   background-color:rgb(55, 83, 26);
+
+}
+
+#updateArea{
+  display: none;
+  position: absolute;
+  top: 150px;
+  right: 450px;
+  max-width: 700px;
+  margin: 20px auto;
+  background-color: #91bceb;
+  padding: 10px;
+  border: 1px solid #c4bfbf;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  overflow-y: auto;
 
 }

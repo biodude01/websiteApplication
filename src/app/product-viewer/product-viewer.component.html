@@ -17,10 +17,10 @@
   <h1>Report Product</h1>
   <p class="description">product: {{productData.productName}}</p>
   <p class="notice">Reports are anonymous, please describe the issue:</p>
-  <form class="panelForm" (ngSubmit)="reportProduct($event)">
-    <textarea rows="4" name="reportDescription" placeholder="Enter your text here" ></textarea>
+  <form class="panelForm" (ngSubmit)="reportProduct()">
+    <textarea rows="4" name="description" id="description" type="text"  placeholder="Enter your text here" [(ngModel)]="report.description" ></textarea>
     <div class="buttons">
-      <button type="submit">Submit</button>
+      <button  type="submit">Submit</button>
       <button (click)="closeReport()" type="button">Cancel</button>
     </div>
   </form>

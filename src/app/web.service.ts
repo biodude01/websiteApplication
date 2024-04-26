@@ -36,12 +36,18 @@ retrieveUserLists(body: any): Observable<any>{ //retrieves all of a user's lists
     return (this.http.post('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/', body))
 }
 
-async retrieveListData(body: any,link: any){ //retrieves individual list data
+retrieveListData(body: any,link: any): Observable<any>{ //retrieves individual list data
   let url =  ('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/' + link)
 
-  return lastValueFrom(this.http.post(url, body))
+  return (this.http.post(url, body))
 
 }
+marketData(): Observable<any>{ //retrieves individual list data
+
+return (this.http.get('http://127.0.0.1:5000//api/v1.0/storeMarketData'))
+
+}
+
 
 
 deleteList(body: any, listID: any){ //removes user list from the database

@@ -5,15 +5,18 @@ import { Injectable, OnInit} from '@angular/core';
 import { WebService } from '../web.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Router } from '@angular/router';
+import { Route } from '@angular/router';
+import { routes } from '../app.routes';
+import { ActivatedRoute } from '@angular/router';
 declare let html2pdf: any;
 
 @Component({
   selector: 'app-shopping-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './shopping-list.component.html',
   styleUrl: './shopping-list.component.css'
 })
@@ -26,9 +29,16 @@ export class ShoppingListComponent {
   totalPages: number = 0; 
   pagedItems: any;
   check: any;
+updateForm = {
 
+  'description' : '',
+  'listName' : '',
+  'list' : '',
+  'id' : ''
+}
 
-  constructor(public webService: WebService, private router: Router) {
+  constructor(private webService: WebService, private router: Router, private route: ActivatedRoute) {
+    this.router.config = routes;
 
 
   }
@@ -69,10 +79,44 @@ deleteList(event: Event, listID: any){
 
 }
 
-goToUpdate(event: Event){
+updateList(event: Event){
   event.stopPropagation(); //Added to stop the clickable list from firing off as well.
+  const form = new FormData();
+  form.append('x-access-token', this.check);
+  
+
+this.webService.updateUserList(this.updateForm.id, form)
+
 
 }
+
+
+
+goToUpdate(event: Event, body: any){
+  event.stopPropagation(); //Added to stop the clickable list from firing off as well.
+  const deletePage = document.getElementById('deletionZone') as HTMLElement; 
+  deletePage.style.display = 'none'
+  const updatePage = document.getElementById('updateArea') as HTMLElement;
+  updatePage.style.display = 'block'
+
+  const form = new FormData();
+  form.append('x-access-token', this.check);
+  this.webService.retrieveListData(form ,body).subscribe((databody) => {
+    this.lists = databody
+    console.log('Search results:', databody);
+  })
+
+
+}
+
+goBack(){
+
+  history.back(); //sends the user back to the previous page
+
+}
+
+
+
 
 
   nextPage() {
@@ -96,8 +140,7 @@ goToUpdate(event: Event){
   }
 
 onclick(data: any) {
-  let url = 'shoppingList/' + data
-  this.router.navigate([url]);
+
 
 }
 

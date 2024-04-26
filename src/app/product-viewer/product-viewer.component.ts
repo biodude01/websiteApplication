@@ -30,6 +30,10 @@ export class ProductViewerComponent {
   priceList: any = [];
   priceListSample:any;
 
+  report= {
+    description : ''
+  };
+
 
 
   constructor(public webService: WebService, public router: Router, private route: ActivatedRoute) {
@@ -127,9 +131,18 @@ const maximumPrice: number = Math.max(...this.priceList);
 let maxPriceBox = document.getElementsByClassName('highestCost').item(0) as HTMLElement;
 let lowestPriceBox = document.getElementsByClassName('lowestCost').item(0) as HTMLElement;
 let averagePriceBox = document.getElementsByClassName('averageCost').item(0) as HTMLElement;
-maxPriceBox.innerText = 'Highest ever cost: £' + String(maximumPrice)
-lowestPriceBox.innerText = 'Lowest ever cost: £' + String(lowestPrice)
+maxPriceBox.innerText = 'Highest recorded cost: £' + String(maximumPrice)
+lowestPriceBox.innerText = 'Lowest recorded cost: £' + String(lowestPrice)
 averagePriceBox.innerText = 'average cost overall: £'+ String(averagePrice)
+
+const earlyYearPriceData = this.priceList[0];
+const currentYearPriceData = this.priceList[this.priceList.length - 1];
+
+ const inflationRate  = (((currentYearPriceData - earlyYearPriceData) / earlyYearPriceData) * 100)
+ let inflationBox = document.getElementsByClassName('inflationText').item(0) as HTMLElement;
+
+ inflationBox.innerText = 'prices have risen by:' + inflationRate.toFixed(2) + '%'
+
 
 
       },
@@ -164,19 +177,14 @@ averagePriceBox.innerText = 'average cost overall: £'+ String(averagePrice)
 
 
 
-reportProduct(details: any){
+reportProduct(){
 
 const form = new FormData();
-const reportPanel = details.target;
-const productName = reportPanel.querySelector('.description').textContent;
-const reportDescription = reportPanel.querySelector('textarea[name="reportDescription"]').value;
 
-console.log('Product Name:', productName);
-console.log('Report Description:', reportDescription);
 
 form.append('productName', this.productData.productName)
 form.append('productID', this.productData.id)
-form.append('userReport', reportDescription)
+form.append('userReport', this.report.description)
 
 
 this.webService.reportProduct(form)
