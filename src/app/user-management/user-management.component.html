@@ -1,6 +1,5 @@
-<div class="accountAlert" style="padding: 20px; display: none; background-color: #a92d2d; color: white;">
-  <div class="closebtn" style="margin-left: 15px; color: white; font-weight: bold; float: right; font-size: 22px; line-height: 20px; cursor: pointer; transition: 0.3s;" onclick="this.parentElement.style.display='none';">&times;</div>
-  Unable to access account- Please login to a valid account first.
+<div class="accountAlert" style="padding: 20px; display: none; background-color: #a92d2d; color: white; margin-top: 80px;">
+  Unable to access account- Please login to a valid account to access and create customised watch lists.
 </div> 
 
 
@@ -12,7 +11,7 @@
 <br>
 <div style="
 width: 50%; margin-left: 630px;">
-<h1>Hello {{accountData.username}}</h1>
+<h1 style="color: white;">Hello {{accountData.username}}</h1>
 
 </div>
 
@@ -21,25 +20,27 @@ width: 50%; margin-left: 630px;">
 <form>
 <h4>Delete account:</h4>
 <label style="text-align: center;">current password:</label>
-<input type = "text" name = "password" placeholder = "password" [(ngModel)]="updateAccountForm.password" [ngModelOptions]="{standalone: true}">
+<input type = "text" name = "password" placeholder = "password" [(ngModel)]="deleteAccountForm.password" [ngModelOptions]="{standalone: true}">
 <br>
-<label><input type="checkbox" name="confirmationCheck">tick to confirm your choice to permanently delete your account.</label>
+<label><input type="checkbox" [(ngModel)]="deleteAccountForm.confirmationCheck" [ngModelOptions]="{standalone: true}" name="confirmationCheck">tick to confirm your choice to permanently delete your account.</label>
 
 <br>
 <button class='deleteAccountButton' (click)="deleteAccount()">Delete account</button>
+<p class="deleteWarning" style="color: crimson;display: none; bottom: 20px; background-color: white; -webkit-text-stroke-width:thin;">example issue reregregerfewfwfwfwefewfwefewf</p>
 </form>  
 
 <form>
 <h4>Change username:</h4>
 <label>new Username:</label>
 <br>
-<input type = "text" name = "username" placeholder = "username" [(ngModel)]="updateAccountForm.username" [ngModelOptions]="{standalone: true}">
+<input type = "text" name = "username" placeholder = "username" [(ngModel)]="updateUsernameForm.username" [ngModelOptions]="{standalone: true}">
 <br>
 <label>current password:</label>
 <br>
-<input type = "text" name = "password" placeholder = "password" [(ngModel)]="updateAccountForm.password" [ngModelOptions]="{standalone: true}">
+<input type = "text" name = "password" placeholder = "password" [(ngModel)]="updateUsernameForm.password" [ngModelOptions]="{standalone: true}">
 <br>
 <button (click)="updateUsername()">Confirm</button>
+<p class="usernameWarning" style="color: crimson;display: none; bottom: 20px; background-color: white; -webkit-text-stroke-width:thin;">example issue reregregerfewfwfwfwefewfwefewf</p>
 </form>
 
 
@@ -47,12 +48,13 @@ width: 50%; margin-left: 630px;">
   <h4>Change email:</h4>
   <label>new email:</label>
   <br>
-  <input type = "text" name = "email" placeholder = "email" [(ngModel)]="updateAccountForm.email" [ngModelOptions]="{standalone: true}">
+  <input type = "text" name = "email" placeholder = "email" [(ngModel)]="updateEmailForm.email" [ngModelOptions]="{standalone: true}">
   <br>
   <label>current password:</label>
   <br>
-  <input type = "text" name = "password" placeholder = "password" [(ngModel)]="updateAccountForm.password" [ngModelOptions]="{standalone: true}">
+  <input type = "text" name = "password" placeholder = "password" [(ngModel)]="updateEmailForm.password" [ngModelOptions]="{standalone: true}">
   <button  (click)="updateEmail()">Confirm</button>
+  <p class="emailWarning" style="color: crimson;display: none; bottom: 20px; background-color: white; -webkit-text-stroke-width:thin;">example issue reregregerfewfwfwfwefewfwefewf</p>
   </form>
 
 
@@ -60,12 +62,13 @@ width: 50%; margin-left: 630px;">
   <form>
     <h4>Change password:</h4>
     <label>current password:</label>
-    <input type = "text" name = "OldPassword" placeholder = "old password" [(ngModel)]="updateAccountForm.oldPassword" [ngModelOptions]="{standalone: true}" >
+    <input type = "text" name = "OldPassword" placeholder = "old password" [(ngModel)]="updatePasswordForm.oldPassword" [ngModelOptions]="{standalone: true}" >
     <br>
     <label>new password:</label>
-    <input type = "text" name = "password" placeholder = "password" [(ngModel)]="updateAccountForm.password" [ngModelOptions]="{standalone: true}">
+    <input type = "text" name = "password" placeholder = "password" [(ngModel)]="updatePasswordForm.password" [ngModelOptions]="{standalone: true}">
     <br>
     <button class="btn btn-success" (click)="updatePassword()">Confirm</button>
+    <p class="passwordWarning" style="color: crimson;display: show; bottom: 20px; background-color: white; -webkit-text-stroke-width:thin;">example issue reregregerfewfwfwfwefewfwefewf</p>
     </form>
   
 

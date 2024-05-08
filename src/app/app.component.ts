@@ -41,13 +41,31 @@ export class AppComponent {
   }
 
 
-    ngOnInit() {
+    async ngOnInit() {
       
       if (localStorage.getItem('x-access-token')){
-        this.loginCheck = true;
-  
+        //could include a steps to reconfirm valid token.
+
+      this.loginCheck = true;
       }
+
+      const form = new FormData();
+      let check = String(localStorage.getItem('x-access-token'))
+      form.append('x-access-token', check)
+      let response = await this.webService.tokenCheck(form)
+
+      if(response =='401'){
+        this.webService.logout(form).then(() => {      
+          localStorage.clear();
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+
+        })
     }
+
+  }
+
   
   onLogout(){
   

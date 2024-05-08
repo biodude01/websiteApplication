@@ -74,15 +74,15 @@ async onRegisterSubmit(){
   form.append('username', this.registerFormData['username']);
   form.append('password', this.registerFormData['password']);
   form.append('email', this.registerFormData['email'])
-  this.registerData = this.webService.register(form);
+  this.registerData = this.webService.register(form).subscribe((data) => {
 
-  if (this.registerData[1] == '401'){
+  if (data[1] == '401'){
     warning.innerText = "Error: required data not supplied"
     warning.style.display = 'block'; 
     return;
 
   }
-  if (this.registerData[1] =='409'){
+  if (data[1] =='409'){
     warning.innerText = "Error: user of email or username already exists"
     warning.style.display = 'block'; 
     return;
@@ -92,12 +92,11 @@ async onRegisterSubmit(){
     warning.style.color = "green";
     warning.innerText = "Registration Successful";
     warning.style.display = 'block'; 
-    await new Promise(resolve => setTimeout(resolve, 2000)); 
     this.router.navigate(['/login']);
   
     return;
 
-
+  })
 }
 
 }

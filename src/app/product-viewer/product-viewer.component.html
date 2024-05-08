@@ -1,43 +1,31 @@
- <!--
-<div class="pagination">
-    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-    <span>{{ currentPage }} / {{ totalPages }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-</div> -->
-
-<div class="dropListPanel">
-  <button class="closeButton" (click)="dropListClose()">&times;</button>
-  <div class="comparisonContainer">
-
-</div>
-</div>
-
-
 <div class="reportPanel">
   <h1>Report Product</h1>
   <p class="description">product: {{productData.productName}}</p>
   <p class="notice">Reports are anonymous, please describe the issue:</p>
   <form class="panelForm" (ngSubmit)="reportProduct()">
     <textarea rows="4" name="description" id="description" type="text"  placeholder="Enter your text here" [(ngModel)]="report.description" ></textarea>
-    <div class="buttons">
-      <button  type="submit">Submit</button>
-      <button (click)="closeReport()" type="button">Cancel</button>
+    <p class="alert"></p>
+    <div class="buttons"><button  type="submit">Submit</button>
+      <button (click)="closeReport()" type="buttons">Cancel</button>
     </div>
   </form>
 </div>
 
 
-<div class="AddListPanel" style="display: none;">
+<div class="addListPanel">
     <h1>Add list</h1>
     <p class="description">adding this product: {{productData.productName}}</p>
     <p class="notice">Enter new list details</p>
-    <form class="panelForm">
-      <label style="color: #000000;"></label>
-      <input type="text" id="listName" name="listName">
-      <textarea rows="4" name="description" placeholder="Enter your text here" ></textarea>
+    <form class="panelForm" (ngSubmit)="addToNewList()">
+      <label style="color: #000000;">Enter List Name:</label>
+      <input type="text" id="name" name="name" [(ngModel)]="list.name">
+      <br>
+      <label style="color: #000000;">(optional)Enter list description:</label>
+      <textarea rows="4" name="description" type="text" placeholder="Enter your description here" [(ngModel)]="list.description" ></textarea>
+      <p class="alert"></p>
       <div class="buttons">
-        <button type="submit">Submit</button>
-        <button class="closeButton" (click)="addListClose()">&times;</button>
+      <button class="buttons" type="submit">Submit</button>
+        <button class="buttons" (click)="addListPanelClose()">&times;</button>
       </div>
     </form>
   </div>
@@ -55,22 +43,26 @@
       <img style="width: 50px; height: 30px; border: 1px solid #000000; vertical-align: middle;" *ngIf="productData.storeOrigin === 'tesco'" src="/assets/tescoIcon.png" alt="TescoImage">
       <img style="width: 50px; height: 30px; border: 1px solid #000000; vertical-align: middle;" *ngIf="productData.storeOrigin === 'sainsbury'" src="/assets/sainsburyIcon.png" alt="SainsburyImage">
       <label style="font-size: large;">       Current Price: £{{this.productData['historicalData'][this.productData['historicalData'].length - 1]['productPrice']}}</label>
-      <button class="dropbutton" onclick="openListChoice()">&#8595; Add to List</button>
-      <div class="dropdown-content" id="myDropdown" *ngFor="let product of userLists">
-        <a (click)="addToList()">{{product.listName}}</a>
-        <a (click)="addToNewList()">+ create new list</a>
-  </div>
+      <button id="dropButton" (click)="openListChoice()">&#8595; Add to List</button>
+    </div>
+      <div class="dropDownContent">
+        <div *ngFor="let list of userLists">
+        <a style='border-color: #000000; border: 2px solid #000000;
+        ' (click)="addToList(list.listID)">{{list.listName}}</a>
+        </div>
+        <div class='newListPane'>
+          <a (click)="addListPanelOpen()">+ create new list</a></div>  
+        </div>
+
   <button class="reportButton" (click)="openReport()">Report Product</button>
 
 </div>
 
-
+<br><br><br><br>
 <div class="chartContainer">
 <h2>Historical Price Changes</h2>
 <canvas style="background-color: rgb(255, 255, 255);" width="400" height="200" id="lineChart"></canvas>
 </div>
-</div>
-
 <div class="priceFacts">
 <label class='lowestCost'>Lowest cost: £</label>
 <br>

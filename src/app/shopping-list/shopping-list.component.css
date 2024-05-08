@@ -31,6 +31,7 @@ background-color: darkgreen;
     padding: 10px;
     border: 1px solid #c4bfbf;
     margin-bottom: 5px;
+
   }
   
   .pagination {
@@ -121,6 +122,11 @@ li {
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+li:hover {
+background-color: #817d7d;
+cursor:pointer;
+
+}
 
 .listing li:last-child {
   margin-bottom: 0;
@@ -185,4 +191,331 @@ border: 1px solid #000000;
   border-radius: 5px;
   overflow-y: auto;
 
+}
+
+
+#productListView{
+  display: none;
+  position: absolute;
+  top: 150px;
+  right: 450px;
+  max-width: 700px;
+  margin: 20px auto;
+  background-color: #91bceb;
+  padding: 10px;
+  border: 1px solid #c4bfbf;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  overflow-y: auto;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.imageContainer{
+  padding-top: 120px ;
+  max-width: 500px;
+  max-height: 650px;
+  right: 60px;
+  height: 650px;
+  width: 500px;
+
+}  
+
+
+.productImage{
+
+  width: 400px; 
+  height: 350px; 
+  left: 60px;
+  position: absolute;
+  margin-right: 10px; 
+
+}
+
+.backButton{
+  background-color: rgba(5, 197, 9, 0.605);
+  position: fixed; 
+  top: 100px;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+
+
+}
+
+.detailsContainer{
+  position: relative;
+  bottom: 650px;
+  right: -690px;
+  width: 50%;
+}
+
+
+.backButton:hover{
+  background-color: rgba(3, 35, 26, 0.605);
+  cursor: pointer;
+
+
+
+}
+
+#lineChart {
+  width: 400px; 
+  height: 300px; 
+}
+
+
+#dropButton{
+  position: absolute;
+  right: 430px;
+  padding: 10px;
+  padding-left: 10px;
+  bottom: 3px;
+  padding-right: 10px;
+  background-color: aquamarine;
+  display: none;
+  cursor: pointer;
+
+
+}
+#dropButton:hover{
+
+  background-color: #007bff;
+  cursor: pointer;
+
+}
+
+.reportButton{
+
+
+      position: absolute;
+      right: 370px;
+      top: 309px;
+      padding: 10px;
+      background-color:#804b4b;
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+
+
+  
+  }
+
+.reportButton:hover{
+
+
+
+      background-color:#cf4646;
+      color: #c9c9c9;
+      cursor: pointer;
+
+
+  
+  }
+
+
+
+h1{
+
+  color: #ddd;
+
+}
+
+
+h2{
+
+  color: #ddd;
+
+}
+h3{
+
+  color: #ddd;
+  text-align: center;
+
+}
+
+
+
+
+
+p{
+
+  color: #ddd;
+
+}
+
+label{
+
+  color: #ddd;
+}
+
+
+
+
+.dropDownContent a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  background-color: #e9e9e9;
+
+}
+
+.dropDownContent a:hover {
+  background-color: #857474;
+  cursor: pointer;
+}
+
+.newListPane {
+  background-color: aquamarine;
+
+
+}
+
+.newListPane a:hover{
+  background-color: #005fc5;
+  cursor: pointer;
+
+}
+
+.chartContainer {
+  width: 100%;
+  height: 300px; 
+  position: relative;
+  left: 100px;
+  bottom: 230px;
+
+}
+
+.alert{
+
+display: none;
+color: red;
+
+}
+
+canvas{
+
+  position: absolute;
+}
+
+.chartContainer h2 {
+  text-align: left;
+}
+
+.priceFacts{
+  width: 20%; 
+  float: right; 
+  padding: 20px; 
+  position: absolute;
+  right: 450px;
+  bottom: -130px;
+  font-size: large;
+  font-weight: bold;
+}
+
+
+.netContentChanges {
+  margin-top: 20px; 
+  bottom: -200px;
+
+}
+
+.netContentChanges h2 {
+  text-align: center;
+}
+
+.netContentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
+}
+
+.netContentBox {
+  background-color: #f0f0f0; 
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  border: 5px solid #000000;
+
+}
+
+.mainFigure {
+  font-size: 24px; 
+  font-weight: bold;
+}
+
+
+.netContentBox h3 {
+  margin-bottom: 10px;
+  color: #333; 
+}
+
+.netContentDifference{
+font-size: 24px; 
+font-weight: bold;
+}
+
+.even {
+  background-color: #c9c9c9; 
+}
+
+.odd {
+  background-color: #504f4f; 
+}
+
+
+.IngredientBox
+{
+width: 90%;
+background-color: #f7f1f1;
+padding: 20px;
+text-align: center;
+margin-bottom: 20px;
+margin: 20px auto;
+border-radius: 5px;
+font-size: 20px; 
+border: 5px solid #000000;
+
+
+}
+
+.sourceList {
+  width: 90%;   
+  overflow-y: auto;
+  background-color: white;
+  padding: 10px;
+  border: 5px solid #000000;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.sourceTable {
+  width: 100%;
+  border-collapse: collapse;
+  list-style-type: disc;
+}
+
+.sourceTable td {
+  border-bottom: 4px solid #ccc;
+  padding: 10px;
+  list-style-type: disc;
+
+}
+
+#listAnalytics{
+
+  display: none;
 }

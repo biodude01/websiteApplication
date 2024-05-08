@@ -65,22 +65,22 @@ reportProduct(body: any){ //sends a new user report
 
 
 
-addList(body: any){ //adds a new list with optional product
-    console.log(body)
-    let url =  ('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/')
-    return lastValueFrom(this.http.post(url, body))
-    
-    }
-
-
-insertToList(body: any, listID: any){ //adds product to a list
+insertToList(body: any){ //adds product to a existing list
         console.log(body)
-        let url =  ('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/' + listID)
+        let url =  ('http://127.0.0.1:5000/api/v1.0/shoppingList')
         return lastValueFrom(this.http.post(url, body))
         
         }
 
-updateUserList(formData: any,listID: any){
+
+insertToNewList(body: any){ //adds product to a new list
+            console.log(body)
+            let url =  ('http://127.0.0.1:5000/api/v1.0/shoppingList')
+            return lastValueFrom(this.http.post(url, body))
+            
+            }
+
+updateUserList(listID: any, formData: any){
             console.log(formData, 'and', listID)
             let url = ('http://127.0.0.1:5000/api/v1.0/account/shoppingLists/' + listID)
             return this.http.put(url, formData).subscribe((response: any) => {
@@ -91,6 +91,14 @@ updateUserList(formData: any,listID: any){
  })
             
 }
+
+async tokenCheck(formData: any){
+   let url= 'http://127.0.0.1:5000/api/v1.0/account/token'
+   return lastValueFrom(this.http.post(url, formData))
+
+}
+
+
 
 
 adminCheck(body: any){ //checks roles of the user
@@ -120,15 +128,9 @@ async login(body: any) { //Retrieves login detail confirmation, but needs a asyn
 
 }
 
-register(body: any) { //registers new users on the database
+register(body: any): Observable<any> { //registers new users on the database
 
-    return this.http.post(
-        'http://127.0.0.1:5000/api/v1.0/account/signup', body
-        ).subscribe((response: any) => {
-            this.requestResult = response;
-            console.log(response)
-            })
-
+    return this.http.post('http://127.0.0.1:5000/api/v1.0/account/signup', body)
 }
 
 updateAccount(body: any,id: any) { //updates account details on the database

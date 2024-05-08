@@ -34,17 +34,30 @@ export class ProductViewerComponent {
     description : ''
   };
 
+  list= {
+
+    name: '',
+    description: ''
+  }
+
 
 
   constructor(public webService: WebService, public router: Router, private route: ActivatedRoute) {
 
   }
 
-  ngOnInit()  {
+  async ngOnInit()  {
 
     this.productID = this.route.snapshot.paramMap.get('id');
     this.storeName = this.route.snapshot.paramMap.get('store'); //Grabbing data from route
+    let dropbutton =  document.getElementById('dropButton')  as HTMLElement;
+
     console.log(this.productID);
+    if (localStorage.getItem('x-access-token')) {
+      dropbutton.style.display = 'block'
+     }
+
+
 
     let url = this.storeName + '=' + this.productID;
   
@@ -133,7 +146,7 @@ let lowestPriceBox = document.getElementsByClassName('lowestCost').item(0) as HT
 let averagePriceBox = document.getElementsByClassName('averageCost').item(0) as HTMLElement;
 maxPriceBox.innerText = 'Highest recorded cost: £' + String(maximumPrice)
 lowestPriceBox.innerText = 'Lowest recorded cost: £' + String(lowestPrice)
-averagePriceBox.innerText = 'average cost overall: £'+ String(averagePrice)
+averagePriceBox.innerText = 'average cost overall: £'+ String(averagePrice.toFixed(2))
 
 const earlyYearPriceData = this.priceList[0];
 const currentYearPriceData = this.priceList[this.priceList.length - 1];
@@ -154,7 +167,17 @@ const currentYearPriceData = this.priceList[this.priceList.length - 1];
     let check = String(localStorage.getItem('x-access-token'));
     form.append('x-access-token', check);
 
+    let response = await this.webService.tokenCheck(form)
 
+    if(response =='401'){
+      this.webService.logout(form).then(() => {      
+        localStorage.clear();
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+    
+      })
+    }
 
     this.webService.retrieveUserLists(form).subscribe((data) => {
       console.log('Search results:', data);
@@ -180,6 +203,13 @@ const currentYearPriceData = this.priceList[this.priceList.length - 1];
 reportProduct(){
 
 const form = new FormData();
+let alertbox = document.getElementsByClassName('alert').item(0) as HTMLElement;
+
+if (this.report.description == ''){
+  console.log("user didn't insert any data")
+alertbox.style.display= 'block'
+}
+alertbox.style.display= 'none'
 
 
 form.append('productName', this.productData.productName)
@@ -214,24 +244,70 @@ openReport(){
 
   }
 
-  addToList(){
+  addListPanelClose(){
+    let panel = document.getElementsByClassName('addListPanel').item(0) as HTMLElement;
+    panel.style.display = "none"
+
+  }
+
+  addListPanelOpen(){
+    let panel = document.getElementsByClassName('addListPanel').item(0) as HTMLElement;
+    panel.style.display = "block"
+
 
 
   }
 
+
   addToNewList(){
+    const form = new FormData();
+    let check = String(localStorage.getItem('x-access-token'));
+    form.append('x-access-token', check);
+    form.append('listName', this.list['name'])
+    form.append('description', this.list['description'])
+    form.append('storeOrigin', this.productData.storeOrigin)
+    form.append('productName', this.productData.id)
+    form.append('option', 'newList')
+
+
+    let result = this.webService.insertToNewList(form)
+    console.log(result)
+    let panel = document.getElementsByClassName('addListPanel').item(0) as HTMLElement;
+    panel.style.display = "none"
+
+
+
+  }
+
+  addToList(list: any){
+    list.stopPropagation(); //Added to stop the clickable list from firing off as well.
+    const form = new FormData();
+    let check = String(localStorage.getItem('x-access-token'));
+    form.append('x-access-token', check);
+    form.append('listID', list)
+    form.append('storeOrigin', this.productData.storeOrigin)
+    form.append('productName', this.productData.id)
+    form.append('option', 'added')
+
+    let result = this.webService.insertToList(form)
+    console.log(result, list)
 
   }
 
   openListChoice(){
+    let panel = document.getElementsByClassName('dropDownContent').item(0) as HTMLElement;
+    console.log('did it')
+    if (panel.style.display == "none"){
+      panel.style.display = "block"
+      
+      }
+      else{
+        panel.style.display = "none"
 
 
+      }
   }
 
-  addListClose(){
-
-
-  }
 
   dropListClose(){
 

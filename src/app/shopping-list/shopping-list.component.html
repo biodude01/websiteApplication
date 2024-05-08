@@ -1,7 +1,5 @@
 
-<div id="contentZone">
 <div class="accountAlert" style="padding: 20px; display: none; background-color: #a92d2d; color: white; margin-top: 80px;">
-    <div class="closebtn" style="margin-left: 15px; color: white; font-weight: bold; float: right; font-size: 22px; line-height: 20px; cursor: pointer; transition: 0.3s;" onclick="this.parentElement.style.display='none';">&times;</div>
     Unable to access account- Please login to a valid account to access and create customised watch lists.
   </div> 
   
@@ -9,12 +7,12 @@
   <div class="listing">
     <h2>Personalised shopping alert lists</h2>
     <ul>
-        <li *ngFor="let item of lists" href="" (click)="onclick(item['listID'])">
+        <li *ngFor="let item of lists" href="" (click)="onclick(item)">
             <span class="listName"><label>Name: </label> {{ item["listName"] }}</span>
             <button class="updateListButton" (click)="goToUpdate($event, item['listID'])">UPDATE</button>
             <br>
             <br>
-            <span class="description"><label>Description: </label>{{ item["description"] }}</span>
+            <span class="description"><label></label>{{ item["description"] }}</span>
             <button class="deleteListButton" (click)="deleteList($event, item['listID'])">DELETE</button>
             <br>
         </li>
@@ -33,7 +31,7 @@
 <div id="updateArea" >
   <button class="backButton" (click)="goBack()">Back</button>
   <h2>Editing: {{lists[0].listName}}</h2>
-  <form class="updateForm" (ngSubmit)="updateList($event)">
+  <form class="updateForm" (ngSubmit)="updateList($event,lists[0])">
     <input style="width: 260px; height: 30px; font: large;" type="text" id="listName" name="listName" placeholder="Insert new list name here" [(ngModel)]="updateForm.listName">
     <br>
     <br>
@@ -44,14 +42,14 @@
 
   </form>
   <ul>
-      <li  *ngFor="let item of lists[0]['list']" href="" (click)="onclick(item['id'])">
+      <li  *ngFor="let item of lists[0]['list']; let i = index" href="">
           <span class="listName"><label>product Name: {{ item['productName'] }} </label></span>
           <span class="listName"><label>Store: </label> {{ item["storeOrigin"] }}</span>
           <br>
           <span class="description"><label>Description: </label>{{ item["productDescription"] }}</span>
           <br>
           <br>
-          <button class="deleteListButton" (click)="updateList($event)">DELETE</button>
+          <button class="deleteListButton" (click)="deleteFromList($event, lists[0], i)">DELETE</button>
           <br>
           <br>
       </li>
@@ -60,5 +58,133 @@
 </div>
 
 
+<div id="productListView" >
+  <button class="backButton" (click)="goBack()">Back</button>
+  <h2>List: {{this.lists[0]['listName']}}</h2>
+  <br>
+  <span class="description"><label></label>{{ this.lists[0]["description"] }}</span>
+  <br><br><br><br>
+  <button class='submitButton' (click)="analyticPage()" type="button">GENERATE PDF REPORT & ANALYTICS</button>
+
+<ul>
+      <li  *ngFor="let item of lists[0]['list']; let i = index" href="" (click)="onclick(item['id'])">
+          <span class="listName"><label>product Name: {{ item['productName'] }} </label></span>
+          <span class="listName"><label>Store: </label> {{ item["storeOrigin"] }}</span>
+          <br>
+          <span class="description"><label>Description: </label>{{ item["productDescription"] }}</span>
+          <br>
+          <span class="price"><label>price: </label>{{ item['historicalData'][item['historicalData'].length - 1]["price"] }}</span>
+          <br>
+          <span class="net contents"><label>net content: </label>{{ item['historicalData'][item['historicalData'].length - 1]['productQuantity'] }}</span>
+          <br>
+          <br>
+      </li>
+  </ul>
+
+</div>
+
+
+<div id="contentZone">
+<div id="listAnalytics" *ngFor="let data of this.lists[0]['list']; let i = index">
+
+<div class="productInfo">
+  <div class="imageContainer">
+    <img class='productImage' style="border: 1px solid #000000; vertical-align: middle;" src="{{this.groupedProducts[i]['productImage']}}" alt="productImage">
+  </div>
+  <div class="detailsContainer">
+    <h1>{{this.groupedProducts[i]['productName']}}</h1>
+    <p>{{this.groupedProducts[i]['productDescription']}}</p>
+      <img style="width: 50px; height: 30px; border: 1px solid #000000; vertical-align: middle;" *ngIf="this.groupedProducts[i]['storeOrigin'] === 'asda'" src="/assets/asdaIcon.png" alt="AsdaImage">
+      <img style="width: 50px; height: 30px; border: 1px solid #000000; vertical-align: middle;" *ngIf="this.groupedProducts[i]['storeOrigin']  === 'tesco'" src="/assets/tescoIcon.png" alt="TescoImage">
+      <img style="width: 50px; height: 30px; border: 1px solid #000000; vertical-align: middle;" *ngIf="this.groupedProducts[i]['storeOrigin']  === 'sainsbury'" src="/assets/sainsburyIcon.png" alt="SainsburyImage">
+      <label style="font-size: large;">       Current Price: £{{this.groupedProducts[i]['historicalData'][this.groupedProducts[i]['historicalData'].length - 1]['productPrice']}}</label>
+    </div>
+
+<br><br><br><br>
+<div class="chartContainer">
+<h2>Historical Price Changes</h2>
+<canvas style="background-color: rgb(255, 255, 255);" width="400" height="200" id="lineChart" >{{this.builtCharts[i]}}</canvas>
+</div>
+<div class="priceFacts">
+<label class='lowestCost'>Lowest cost: £ {{this.MinCosts[i]}}</label>
+<br>
+<br>
+<label class='highestCost'>Highest cost: £ {{this.MaxCosts[i]}}</label>
+<br>
+<br>
+<label class='averageCost'>average cost: £ {{this.averageCosts[i]}}</label>
+<br>
+<br>
+<label class='inflationText'>Inflation rates are estimated: {{this.inflationRates[i]}}</label>
+</div>
+
+
+
+<br>
+<br>
+<br>
+<div class="netContentChanges">
+  <h2>Net Content Examination</h2>
+  <div class="netContentGrid">
+    <div class="netContentBox">
+      <h3>{{this.groupedProducts[i]['historicalData'][this.groupedProducts[i]['historicalData'].length - 1]['sourceDate']}}</h3>
+      <div class="mainFigure">{{this.groupedProducts[i]['historicalData'][this.groupedProducts[i]['historicalData'].length - 1]['productQuantity']}}</div>
+    </div>
+    <div class="netContentBox">
+      <h3>Total difference</h3>
+      <div class="netContentDifference">{{this.netContentGrouping[i]}}</div>
+    </div>
+    <div class="netContentBox">
+      <h3>{{this.groupedProducts[i]['historicalData'][0]['sourceDate']}}</h3>
+      <div class="mainFigure">{{this.groupedProducts[i]['historicalData'][0]['productQuantity']}}</div>
+    </div>
+  </div>
+  <h2>Ingredient Examination</h2>
+  <h3>Ingredient listings from {{this.productAnalysisGrouping[i]['latestDate']}}</h3>
+</div>
+<div class="IngredientBox">
+  <div class="">{{this.productAnalysisGrouping[i]['latestList']}}</div>
+</div>
+
+<div>
+<h3>Ingredient listings from {{this.productAnalysisGrouping[i]['earliestDate']}}</h3>
+</div>
+<div class="IngredientBox">
+  <div class="">{{this.productAnalysisGrouping[i]['earliestList']}}</div>
+</div>
+
+<div>
+  <h3>Found missing ingredients from {{this.productAnalysisGrouping[i]['latestDate']}} to {{this.productAnalysisGrouping[i]['earliestDate']}}</h3>
+  </div>
+  <div class="IngredientBox">
+    <div style="color:red;">{{this.productAnalysisGrouping[i]['missingIngredients']}}</div>
+  </div>
+
+  <div>
+    <h3>Ingredients found to be added after {{this.productAnalysisGrouping[i]['earliestDate']}} to {{this.productAnalysisGrouping[i]['latestDate']}}</h3>
+    </div>
+    <div class="IngredientBox">
+      <div style="color: green;">{{this.productAnalysisGrouping[i]['newIngredients']}}</div>
+    </div>
+    
+    <div>
+      <h3>Sources for all this data</h3>
+      </div>
+      <div class="sourceList">
+        <table class="sourceTable">
+          <tbody>
+            <tr *ngFor="let product of this.groupedProducts[i]['historicalData']">
+              <ul>
+              <li><td><a href="{{product.source}}">{{product.source}}</a></td></li>
+            </ul>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      
+</div>
+
+</div>
 
 </div>

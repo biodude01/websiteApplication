@@ -1,6 +1,7 @@
 <body>
 <form (ngSubmit)="search($event)">
 <div class="searchContainer">
+  <label style="font-size: large; margin: auto;">Begin searching for products here</label>
     <input type="text" name="productName" placeholder="Search for products">
     <div class="checkboxContainer">
       <label><input type="checkbox" name="tescoCheck" checked> Tesco</label>
@@ -34,8 +35,9 @@
 
     <div class="gridArea">
     <div class="searchResults" href (click)="onclick(product['storeOrigin'], product['id'])" *ngFor="let product of searchResults">
-        <img style="width: 350px; height: 250px; border: 1px solid #000000; vertical-align: right; justify-content: center; align-items: center;" src={{product.productImage}}>
-        <h2><a>{{product.productName}}</a></h2>
+        <img style="width: 350px; height: 250px; border: 1px solid #000000; vertical-align: right; justify-content: center; align-items: center;   cursor: pointer;
+        " src={{product.productImage}}>
+        <h2 style="cursor: pointer;"><a>{{product.productName}}</a></h2>
         <span class="price">{{product.historicalData[0].productPrice}}</span>
         <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="product.storeOrigin === 'asda'" src="/assets/asdaIcon.png" alt="AsdaImage">
         <img style="width: 30px; height: 20px; border: 1px solid #000000; vertical-align: middle;" *ngIf="product.storeOrigin === 'tesco'" src="/assets/tescoIcon.png" alt="TescoImage">

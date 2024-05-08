@@ -1,6 +1,5 @@
 <div class="registerPanel">
     <h2   style="text-decoration: underline;">Register</h2>
-    <p class="registerWarning" style="color: crimson;display: none; position: absolute; bottom: 10px; left: 20px"></p>
     <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm">
         <div class="formGroup">
             <label for="email">Email:</label>
@@ -15,5 +14,7 @@
         <input type="password" id="password" name="password" [(ngModel)]="registerFormData.password">
       </div>
       <button type="submit" [disabled]="!registerForm.valid">Register</button>
+      <p class="registerWarning" style="color: crimson;display: none; bottom: 20px; background-color: white; -webkit-text-stroke-width:thin;"></p>
+
     </form>
   </div>
